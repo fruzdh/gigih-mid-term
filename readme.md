@@ -258,3 +258,48 @@ npm install
 ```
 npm run start
 ```
+
+# Add dummy data
+
+1. <a href='https://www.mongodb.com/docs/manual/administration/install-community/'>Install and run mongoDB</a>
+2. Open terimnal and run mongosh
+
+```
+mongosh.exe
+```
+
+3. Run the following code in mongosh
+
+```
+use gigih
+const products = [
+	{
+		title: 'Cadbury Cokelat Mini Bites Sharebag & Oreo Biskuit Vanilla Bundle',
+		price: 34999,
+		url: 'https://tokopedia.link/5ljWJQQ5MBb'
+	},
+	{
+		title: 'Pempek Ikan Asli Palembang isi 40 Campur (Telur Kecil,Adaan,Lenjer)',
+		price: 109200,
+		url: 'https://tokopedia.link/7InFhyPhMBb'
+	}
+]
+
+const productIDs = db.products.insertMany(products).insertedIds;
+
+const videos = [
+  {
+    urlImageThumbnail: "https://i.ytimg.com/vi/mAmDyUJlfww/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBe3mBXOph3Q3pGoXh9r8mTPkEabA"
+  },
+  {
+    urlImageThumbnail: "https://i.ytimg.com/vi/dCVIEOzcARE/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAkZtSVoXLhOBMjvwAVwWJ4oi3yXw"
+  }
+]
+
+const videoIDs = db.videos.insertMany(videos).insertedIds;
+
+const filter = {_id: videoIDs['0']}
+const update = {productIds: productIDs['0']}
+db.videos.update(filter, {$push: update})
+
+```
