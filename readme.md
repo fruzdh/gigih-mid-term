@@ -13,6 +13,9 @@
     <li>
       <a href="#how-to-run">How to Run</a>
     </li>
+    <li>
+      <a href='#add-dummy-data-optional'>Add Dummy Data [optional]</a>
+    </li>
   </ol>
 </details>
 
@@ -259,7 +262,7 @@ npm install
 npm run start
 ```
 
-# Add dummy data
+# Add Dummy Data [*optional*]
 
 1. <a href='https://www.mongodb.com/docs/manual/administration/install-community/'>Install and run mongoDB</a>
 2. Open terimnal and run mongosh
